@@ -14,11 +14,13 @@
 # 	else:
 # 		return -1
 
-def binarySearch(arr, l, r, x):
+def binarySearch(arr, x):
 	"""
 	This is an iterative approach of the Binary Search
 	"""
-	while l<r:
+	l = 0
+	r = len(arr)-1
+	while l<=r:
 		mid = l+(r-l)//2
 		if arr[mid]==x:
 			return mid
@@ -29,6 +31,7 @@ def binarySearch(arr, l, r, x):
 	return -1
 
 
-
-arr=[1, 6, 19, 34, 56, 90, 119, 133]
-print(binarySearch(arr, 0, len(arr)-1, 119))
+arr=[5]
+# arr=[1, 6, 19, 34, 56, 90, 119, 133]
+# print(binarySearch(arr, 0, len(arr)-1, 119))
+print(binarySearch(arr, 5))

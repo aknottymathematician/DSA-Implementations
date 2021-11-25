@@ -142,7 +142,25 @@ class LinkedList:
 
 	def removeByvalue(self, data):
 		# Remove first node that contains data
-		pass 
+		if self.head is None:
+			print("Linked List is Empty")
+			return
+		if self.head == data:
+			self.head = self.head.next
+			return
+
+		itr = self.head
+		count = 0
+		while itr:
+			# if itr.data == data:
+			# 	print(count)
+			# 	self.removeNode(count)
+			# 	break
+			if itr.next.data == data:
+				itr.next = itr.next.next
+				break
+			itr = itr.next
+		
 
 
 
@@ -154,6 +172,8 @@ if __name__ == "__main__":
 	ll.insertNode(2, "jackfruit")
 	ll.printNode()
 	ll.insertAftervalue("jackfruit", "peach")
+	ll.printNode()
+	ll.removeByvalue("cheary")
 	ll.printNode()
 	# print("Length of Linked List", ll.getLength())
 

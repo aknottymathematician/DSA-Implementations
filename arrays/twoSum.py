@@ -30,7 +30,7 @@ def twoSumshash(arr, target):
     return []
 
 
-##METHOD II(Sort the array)
+##METHOD III(Sort the array)
 ## Time Complexity O(NlogN), Space Complexity O(1)
 def twoSumsort(arr, target):
     arr.sort()

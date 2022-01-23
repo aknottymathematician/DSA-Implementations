@@ -42,3 +42,5 @@ print(pq.size())
 print(pq.dequeue())
 
 print(pq.peek())
+
+print(pq.buffer)

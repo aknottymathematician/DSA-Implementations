@@ -85,12 +85,12 @@ class BinarySearchTreeNode:
 
 
 	def find_max(self):
-		if self.right is None:
+		if self.right is None: # Right most leaf node
 			return self.data
 		return self.right.find_max()
 
 	def find_min(self):
-		if self.left is None:
+		if self.left is None: # Left most leaf node
 			return self.data
 		return self.left.find_min()
 
@@ -100,6 +100,46 @@ class BinarySearchTreeNode:
 		right_sum = self.right.calculate_sum() if self.right else 0
 
 		return self.data + left_sum + right_sum
+
+
+	def delete(self, value):
+		if self.data is None:
+			print("tree is empty")
+			return
+		if value < self.data:
+			if self.left:
+				self.left = self.left.delete(value)
+			else:
+				return None
+		elif value > self.data:
+			if self.right:
+				self.right = self.right.delete(value)
+		else:
+			if self.left is None and self.right is None:
+				return None
+			if self.left is None:
+				temp = self.right
+				self = None
+				return temp
+
+			if self.right is None:
+				temp = self.left
+				self = None
+				return temp
+
+			node = self.right
+			while node.left:
+				node = node.left
+			self.data = node.data
+			self.right = self.right.delete(node.data)
+		return self	
+			
+			# min_value = self.right.find_min()
+			# self.data = min_value
+			# self.right = self.right.delete(min_value)
+
+		return self
+
 
 
 # Helper Method
@@ -114,10 +154,11 @@ def build_tree(elements):
 if __name__ == '__main__':
 	numbers = [17,4,12,3,14,19,3,2,34]
 	numbers_tree = build_tree(numbers)
+	print(numbers_tree.delete(12))
 	print(numbers_tree.inorder_traversal())
-	print(numbers_tree.preorder_traversal())
-	print(numbers_tree.postorder_traversal())
-	print(numbers_tree.find_max())
-	print(numbers_tree.find_min())
-	print(numbers_tree.calculate_sum())
+	# print(numbers_tree.preorder_traversal())
+	# print(numbers_tree.postorder_traversal())
+	# print(numbers_tree.find_max())
+	# print(numbers_tree.find_min())
+	# print(numbers_tree.calculate_sum())
 	

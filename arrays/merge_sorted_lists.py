@@ -51,7 +51,7 @@ def merge_list1(arr1, arr2):
 
 '''
 Idea 1(NO EXTRA SPACE)
-Time is O(m(m+n)) and Space Complexity O(1) since we did not use any extra space
+Time is O(m(m+n)) and Space Complexity O(m) since we did not use any extra space
 - Create two new variables to keep track of current index of both variables
 - Compare two lists 
 - If elements of list1 is greater than elements of list2 insert list2 element and increment both index numbers

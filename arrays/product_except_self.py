@@ -21,7 +21,7 @@ def optimized(arr):
 	left = 1
 	for i in arr:
 		product.append(left)
-		left = left * i
+		left = left * arr[i]
 
 	right = 1
 	for i in range(len(arr)-1, -1, -1):

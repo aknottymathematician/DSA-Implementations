@@ -138,7 +138,7 @@ class BinarySearchTreeNode:
 			# self.data = min_value
 			# self.right = self.right.delete(min_value)
 
-		return self
+		# return self
 
 
 

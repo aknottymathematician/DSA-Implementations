@@ -34,3 +34,22 @@ def inPLace(arr):
 
 
 print(inPLace([10,-1,20,4,5,-9,-6]))
+
+# def foo(value, lst):
+#     value = 1
+#     print(value)
+#     lst[0] = 44
+
+# v = 3
+lst = [[1, 2, 3],[1, 2, 3],[1, 2, 3]]
+# print(foo(v, lst))
+# print(v, lst[0])
+print(lst[0].pop())
+
+# def f(i, values = []):
+#     values.append(i)
+#     print (values),
+#     return values
+# f(1)
+# f(2)
+# f(3)

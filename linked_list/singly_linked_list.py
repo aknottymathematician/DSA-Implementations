@@ -62,6 +62,11 @@ class LinkedList:
 			itr = itr.next
 		return count
 
+	def getLengthRecursive(self, node):
+		if not node:
+			return 0
+		return 1 + self.getLengthRecursive(node.next)
+
 	def removeNode(self, index):
 		"""
 		Remove the element at the given index
@@ -152,15 +157,20 @@ class LinkedList:
 		itr = self.head
 		count = 0
 		while itr:
-			# if itr.data == data:
-			# 	print(count)
-			# 	self.removeNode(count)
-			# 	break
 			if itr.next.data == data:
 				itr.next = itr.next.next
 				break
 			itr = itr.next
 		
+	def get(self, index: int) -> int:
+		curr = self.head
+		count = 0
+		while curr:
+			if count == index:
+				return curr
+			count += 1
+			curr = curr.next
+		return -1
 
 
 
@@ -175,6 +185,6 @@ if __name__ == "__main__":
 	ll.printNode()
 	ll.removeByvalue("cheary")
 	ll.printNode()
-	# print("Length of Linked List", ll.getLength())
-
+	print("Length of Linked List", ll.getLengthRecursive(ll.head))
+	print("Element at index 3", ll.get(3))
 		

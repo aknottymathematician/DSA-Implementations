@@ -30,4 +30,4 @@ def optimized(arr):
 	return product
 
 print(optimized([1, 2, 3, 4]))
-
+x

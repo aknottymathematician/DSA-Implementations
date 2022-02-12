@@ -1,32 +1,32 @@
 '''
-> Function to add node
+> Function to add vertice
 > Function to add edge
 '''
 
-nodes = []
+vertices = []
 graph = []
-node_count = 0
+vertice_count = 0
 
 
-def add_node(node):
-	global node_count
-	if node in nodes:
-		return "Node already in Graph"
+def add_vertice(vertice):
+	global vertice_count
+	if vertice in vertices:
+		return "vertice already in Graph"
 
-	node_count += 1
-	nodes.append(node)
+	vertice_count += 1
+	vertices.append(vertice)
 	for g in graph:
 		g.append(0)
 	# temp = []
-	# for count in range(node_count):
+	# for count in range(vertice_count):
 	# 	temp.append(0)
-	temp = node_count*[0]
+	temp = vertice_count*[0]
 	graph.append(temp)
 
 #Directed and Undirected graphs
-def add_edge(node1, node2):
-	index1 = nodes.index(node1)
-	index2 = nodes.index(node2)
+def add_edge(vertice1, vertice2):
+	index1 = vertices.index(vertice1)
+	index2 = vertices.index(vertice2)
 
 	#UNDIRECTED GRAPH
 	graph[index1][index2] = 1
@@ -35,24 +35,35 @@ def add_edge(node1, node2):
 	# #DIRECTED GRAPH v1 -> v2
 	# graph[index1, index2] = 1
 
+#Directed and Undirected graphs
+def add_edge_cost(vertice1, vertice2, cost):
+	index1 = vertices.index(vertice1)
+	index2 = vertices.index(vertice2)
+
+	#WEIGHTED UNDIRECTED GRAPH
+	graph[index1][index2] = cost
+	graph[index2][index1] = cost
+
+	# #WEIGHTED DIRECTED GRAPH v1 -> v2
+	# graph[index1, index2] = cost
 
 
 def print_graph():
-	for i in range(node_count):
-		for j in range(node_count):
+	for i in range(vertice_count):
+		for j in range(vertice_count):
 			print(graph[i][j], end=" ")
 		print()
 
-print("Before adding nodes")
-print(nodes)
+print("Before adding vertices")
+print(vertices)
 print(graph)
 
-add_node("A")
-add_node("B")
-add_node("C")
-add_node("D")
+add_vertice("A")
+add_vertice("B")
+add_vertice("C")
+add_vertice("D")
 
-print("After adding nodes")
+print("After adding vertices")
 print_graph()
 
 print("After adding edges")

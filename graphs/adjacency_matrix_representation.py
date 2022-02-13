@@ -1,6 +1,7 @@
 '''
 > Function to add vertice
 > Function to add edge
+> Function to delete vertice and edge
 '''
 
 vertices = []
@@ -35,7 +36,7 @@ def add_edge(vertice1, vertice2):
 	# #DIRECTED GRAPH v1 -> v2
 	# graph[index1, index2] = 1
 
-#Directed and Undirected graphs
+#Weighted Directed and Undirected graphs
 def add_edge_cost(vertice1, vertice2, cost):
 	index1 = vertices.index(vertice1)
 	index2 = vertices.index(vertice2)
@@ -46,6 +47,27 @@ def add_edge_cost(vertice1, vertice2, cost):
 
 	# #WEIGHTED DIRECTED GRAPH v1 -> v2
 	# graph[index1, index2] = cost
+
+def delete_vertice(vertice):
+	global vertice_count
+	if not vertice in vertices:
+		return "vertice already not in the graph"
+	index1 = vertices.index(vertice)
+	vertice_count -= 1
+	vertices.remove(vertice)
+	graph.pop(index1)
+	for i in graph:
+		i.pop(index1)
+
+def delete_edge(vertice1, vertice2):
+	if not vertice1 in vertices or not vertice2 in vertices:
+		print("vertices not present in graph")
+	index1 = vertices.index(vertice1)
+	index2 = vertices.index(vertice2)
+	print("",index1, index2)
+	graph[index1][index2] = 0
+	graph[index2][index1] = 0
+
 
 
 def print_graph():
@@ -71,4 +93,9 @@ add_edge("A", "B")
 add_edge("B", "D")
 add_edge("C", "A")
 
+print_graph()
+print("Before deleting edges")
+# delete_vertice("A")
+delete_edge("A", "B")
+print("After deleting edges")
 print_graph()

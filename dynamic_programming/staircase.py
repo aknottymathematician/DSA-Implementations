@@ -31,7 +31,7 @@ def stairway2(n):
 Follow Up Question - What if you can climb k steps at a time? s.t. k<n
 '''
 Time Complexity - O(nk); Space Complexity - O(n)
-def stairwayKSteps(n, k):
+def stairwayK1Steps(n, k):
 	dp = (n+1)*[0]
 	dp[0] = 1
 	dp[1] = 1
@@ -44,6 +44,36 @@ def stairwayKSteps(n, k):
 			dp[i] += dp[i-j]
 	return dp[n]
 
+Time Complexity - O(nk); Space Complexity - O(k)
+def stairwayK2Steps(n, k):
+	dp = (n+1)*[0]
+	dp[0] = 1
+
+	for i in range(1, n+1):
+		#dp[i] = dp[i-1] + dp[i-2] + dp[i-3]+ ... +dp[i-k] 
+		for j in range(1,k):
+			if i-j<0:
+				continue
+			dp[i%k] += dp[(i-j)%k]
+	return dp[n%k]
+
+
+'''
+Follow Up Question - What if given n and k, there are also some red steps that you can't climb
+'''
+def stairwayRedSteps(n, k, red):
+	dp = (n+1)*[0]
+	dp[0] = 1
+
+	for i in range(1, n+1):
+		for j in range(1, k):
+			if i-j<0:
+				continue
+			if stair[i-1]:
+				dp[i%k] = 0
+			else:
+				dp[i%k] += dp[(i-j)%k]
+		return dp[n%k]
 
 print(stairwayKSteps(8, 4))
 # print(stairway2(8))

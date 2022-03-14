@@ -2,6 +2,7 @@ def simplifyPath(path):
 	stack = []
 	cur = ""
 
+	#reason for adding adding / in for loop is to take care of edge case where input does not end with /
 	for p in path+"/":
 		if p == "/":
 			if cur == "..":
@@ -15,5 +16,5 @@ def simplifyPath(path):
 
 	return "/" + "/".join(stack)
 
-path = "/home//foo/"
+path = "/a//b////c/d//././/.."
 print(simplifyPath(path))
